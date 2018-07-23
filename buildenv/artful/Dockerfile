@@ -25,7 +25,7 @@ RUN python get-pip.py
 RUN pip install virtualenv
 RUN cd /home
 RUN virtualenv -p /usr/bin/python /home/py2
-RUN virtualenv -p /usr/bin/python /home/py3
+RUN virtualenv -p /usr/bin/python3 /home/py3
 RUN . /home/py2/bin/activate; pip install numpy==1.11
 RUN . /home/py3/bin/activate; pip install numpy==1.11
 
