@@ -24,5 +24,4 @@ RUN . /home/py2/bin/activate; pip install numpy==1.11
 # install buildtools
 RUN yum install -y automake autoconf libtool make
 RUN yum install -y rpm-build
-RUN yum install -y git
 RUN yum clean all
