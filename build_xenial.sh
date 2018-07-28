@@ -7,3 +7,5 @@ docker run -ti --rm -v`pwd`/build_deb:/home/build_deb -e CUDAVER=${CUDAVER} -e S
 
 export CUDAVER=9.2
 docker run -ti --rm -v`pwd`/build_deb:/home/build_deb -e CUDAVER=${CUDAVER} -e SQAODVER=${SQAODVER} shinmorino/sqaod_buildenv:xenial bash -c 'cd /home/build_deb; ./build_cuda.sh;'
+
+docker run -ti --rm -v `pwd`/build_deb:/home/build_deb shinmorino/sqaod_buildenv:xenial bash -c 'cd /home/build_deb; ./build_py.sh py2; ./build_py.sh py3'
