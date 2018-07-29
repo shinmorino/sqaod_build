@@ -1,4 +1,4 @@
-FROM centos:6
+FROM centos:6.9
 MAINTAINER Shinya Morino <shin.morino@gmail.com>
 
 # register CUDA repo
