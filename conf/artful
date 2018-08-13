@@ -1,0 +1,3 @@
+pyvers="py2 py3"
+cudavers="9.2"
+
