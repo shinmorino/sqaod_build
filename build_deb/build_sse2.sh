@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./clean.sh
+
 set -e
 
 SQAODDIR=sqaod-${SQAODVER}
