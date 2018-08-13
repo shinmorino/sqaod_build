@@ -14,3 +14,7 @@ cp -r sqaod-${version} build_deb/
 # rpm
 rm -rf rpm/build/SOURCES/*
 tar -czf rpmbuild/SOURCES/sqaod-${version}.tar.gz sqaod-${version}
+
+# tests
+rm -rf tests/sqaod-${version}
+cp -r sqaod-${version} tests/
