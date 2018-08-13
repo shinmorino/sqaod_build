@@ -10,7 +10,7 @@
 
 %define platform_libdir %{_libdir}/%{_target_cpu}-%{_target_os}%{?_gnu}
 %define libsqaodc_simd_libdir %{_libdir}/libsqaodc-%{simd}
-%define libsqaodc_cuda_libdir %{_libdir}/libsqaodc-%{cudaver}
+%define libsqaodc_cuda_libdir %{_libdir}/libsqaodc-cuda-%{cudaver}
 %define _unpackaged_files_terminate_build 0
 
 Name:           sqaod
