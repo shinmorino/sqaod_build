@@ -1,9 +1,10 @@
 #!/bin/bash
 
 export SQAODVER=0.3.1
+sudo chown root:root -R rpmbuild
+docker run -ti --rm -v`pwd`/rpmbuild:/root/rpmbuild shinmorino/sqaod_buildenv:centos7 bash -c 'cd /root/rpmbuild/SPECS; ./gen_spec.sh; rpmbuild -ba libsqaodc-sse2-cuda-9-0-devel.spec; rpmbuild -ba libsqaodc-avx2.spec; rpmbuild -ba libsqaodc-sse2-cuda-9-2.spec; '
 
-export CUDAVER=9.0
-docker run -ti --rm -v`pwd`/rpmbuild:/root/rpmbuild -e CUDAVER=${CUDAVER} -e SQAODVER=${SQAODVER} shinmorino/sqaod_buildenv:centos7 bash #-c 'cd /root; ./build_sse2.sh; ./build_avx2.sh'
-
-#export CUDAVER=9.2
-#docker run -ti --rm -v`pwd`/build_deb:/home/build_deb -e CUDAVER=${CUDAVER} -e SQAODVER=${SQAODVER}# shinmorino/sqaod_buildenv:xenial bash -c 'cd /home/build_deb; ./build_cuda.sh;'
+mkdir -p packages
+sudo rm -rf packages/centos7
+sudo mv rpmbuild/RPMS/* packages/centos7
+sudo mv rpmbuild/SRPMS/* packages/centos7
