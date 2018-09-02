@@ -15,6 +15,5 @@ sudo rm -rf packages/xenial
 sudo mv build_deb/packages packages/xenial
 
 mkdir -p packages/pydist
-cp build_deb/sqaodc-${SQAODVER}/sqaodpy/dist/*.whl ./packages/pydist/
-cp build_deb/sqaodc-${SQAODVER}/sqaodpy/dist/*.tar.gz ./packages/pydist/
-
+cp build_deb/sqaod-${SQAODVER}/sqaodpy/dist/*.whl ./packages/pydist/
+cp build_deb/sqaod-${SQAODVER}/sqaodpy/dist/*.tar.gz ./packages/pydist/

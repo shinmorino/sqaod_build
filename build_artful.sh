@@ -12,4 +12,4 @@ sudo rm -rf packages/artful
 sudo mv build_deb/packages packages/artful
 
 mkdir -p packages/pydist
-cp build_deb/sqaodc-${SQAODVER}/sqaodpy/dist/*.whl ./packages/pydist/
+cp build_deb/sqaod-${SQAODVER}/sqaodpy/dist/*.whl ./packages/pydist/
