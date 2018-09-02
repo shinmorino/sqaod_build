@@ -13,10 +13,10 @@ RUN apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/r
 
 # install CUDA
 RUN apt-get update
-RUN apt-get install -y cuda-core-9-2 cuda-compiler-9-2 cuda-command-line-tools-9-2 cuda-libraries-9-2 cuda-libraries-dev-9-2
+RUN apt-get install -y cuda-compiler-9-2 cuda-command-line-tools-9-2 cuda-libraries-9-2 cuda-libraries-dev-9-2
 
 # install python env
-RUN apt-get install -y python-dev python3-dev
+RUN apt-get install -y python-dev python3.6-dev python3.7-dev
 RUN apt-get install -y curl
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 
@@ -25,13 +25,24 @@ RUN python get-pip.py
 RUN pip install virtualenv
 RUN cd /home
 RUN virtualenv -p /usr/bin/python /home/py2
-RUN virtualenv -p /usr/bin/python3 /home/py3
+RUN virtualenv -p /usr/bin/python3.6 /home/py36
+RUN virtualenv -p /usr/bin/python3.7 /home/py37
 RUN ln -sf locale.h /usr/include/xlocale.h # workaround on glibc header change.
 RUN . /home/py2/bin/activate; pip install numpy==1.11
-RUN . /home/py3/bin/activate; pip install numpy==1.11
+RUN . /home/py36/bin/activate; pip install numpy==1.11
+RUN . /home/py37/bin/activate; pip install numpy==1.11
 
 # install buildtools
 RUN apt-get install -y automake autoconf libtool
 RUN apt-get install -y debhelper autotools-dev
 RUN apt-get install -y git
 RUN apt-get autoclean
+
+# nvidia-docker 1.0
+LABEL com.nvidia.volumes.needed="nvidia_driver"
+LABEL com.nvidia.cuda.version="${CUDA_VERSION}"
+
+# nvidia-container-runtime
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+ENV NVIDIA_REQUIRE_CUDA "cuda>=9.0"
