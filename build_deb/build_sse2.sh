@@ -14,6 +14,7 @@ export CUDA_PREFIX=/usr/local/cuda-${CUDAVER}
 export CFLAGS="-O2"
 
 cd ${SQAODDIR}
+./autogen.sh
 ./configure
 make clean
 cd ../

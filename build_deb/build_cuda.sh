@@ -14,6 +14,7 @@ export CFLAGS="-O2"
 ls
 echo SQDIR ${SQAODDIR}
 cd ${SQAODDIR}
+./autogen.sh
 ./configure
 make clean
 cd ..
