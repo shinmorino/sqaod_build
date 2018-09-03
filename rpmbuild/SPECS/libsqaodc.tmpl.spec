@@ -8,7 +8,7 @@
 %define cuda_priority @CUDA_PRIORITY@
 %define build_devel @BUILD_DEVEL@
 
-%define platform_libdir %{_libdir}/%{_target_cpu}-%{_target_os}%{?_gnu}
+%define platform_libdir %{_libdir}
 %define libsqaodc_simd_libdir %{_libdir}/libsqaodc-%{simd}
 %define libsqaodc_cuda_libdir %{_libdir}/libsqaodc-cuda-%{cudaver}
 %define _unpackaged_files_terminate_build 0
