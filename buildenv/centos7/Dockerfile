@@ -7,7 +7,7 @@ COPY cuda.repo /etc/yum.repos.d/cuda.repo
 # prepare apt-get
 RUN yum clean all
 RUN yum install -y cuda-core-9-0 cuda-command-line-tools-9-0 cuda-libraries-9-0 cuda-libraries-dev-9-0
-RUN yum install -y cuda-core-9-2 cuda-compiler-9-2 cuda-command-line-tools-9-2 cuda-libraries-9-2 cuda-libraries-dev-9-2
+RUN yum install -y cuda-compiler-9-2 cuda-command-line-tools-9-2 cuda-libraries-9-2 cuda-libraries-dev-9-2
 
 # install python env
 RUN yum install -y python-devel
@@ -25,3 +25,12 @@ RUN . /home/py2/bin/activate; pip install numpy==1.11
 RUN yum install -y automake autoconf libtool make
 RUN yum install -y rpm-build
 RUN yum clean all
+
+# nvidia-docker 1.0
+LABEL com.nvidia.volumes.needed="nvidia_driver"
+LABEL com.nvidia.cuda.version="${CUDA_VERSION}"
+
+# nvidia-container-runtime
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
+ENV NVIDIA_REQUIRE_CUDA "cuda>=9.0"
