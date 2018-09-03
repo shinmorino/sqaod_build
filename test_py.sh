@@ -9,4 +9,4 @@ rm -rf tests/pydist
 cp -r packages/${dist} tests/packages
 cp -r packages/pydist tests/
 
-docker run --rm -ti -v`pwd`/tests:/home/tests -e SIMD=${simd} -e SQAODVER=${version} -e PYVERS="${pyvers}" -e CUDAVERS="${cudavers}" shinmorino/sqaod_buildenv:${dist} bash -c 'cd /home/tests; ./test_py.sh $SQAODVER; bash'
+docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=1 --rm -ti -v`pwd`/tests:/home/tests -e SIMD=${simd} -e SQAODVER=${version} -e PYVERS="${pyvers}" -e CUDAVERS="${cudavers}" shinmorino/sqaod_buildenv:${dist} bash -c 'cd /home/tests; ./test_py.sh $SQAODVER; bash'
