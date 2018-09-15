@@ -1,0 +1,4 @@
+deb [arch=amd64] https://shinmorino.github.io/sqaod/ubuntu @DIST@ multiverse
+#deb [arch=amd64] file:/home/smorino/projects/sqaod-gh-pages/ubuntu/ @DIST@ multiverse
+#deb [arch=amd64] http://172.17.0.2/ubuntu @DIST@ multiverse
+
