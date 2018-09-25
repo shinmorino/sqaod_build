@@ -11,7 +11,7 @@ rm -rf ${sqaoddir}/sqaodpy/dist/* ${sqaoddir}/sqaodpy/build/*
 . /home/${pyver}/bin/activate
 cd ${sqaoddir}/sqaodpy
 
-python setup.py sdist bdist_wheel
+python setup.py sdist bdist_wheel --plat-name manylinux1_x86_64
 
 cd ../..
 
