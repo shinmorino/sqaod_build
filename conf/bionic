@@ -1,0 +1,3 @@
+pyvers="py2 py36 py37"
+cudavers="10.0"
+
