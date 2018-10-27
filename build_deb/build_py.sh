@@ -1,8 +1,8 @@
 #!/bin/bash
 
-version=0.3.1
+version=${SQAODVER}
 
-pyver=$1
+pyver=${1}
 sqaoddir=sqaod-${version}
 
 dpkg -i packages/libsqaodc*.deb

@@ -12,9 +12,10 @@ RUN apt-get update
 RUN apt-get -y install apt-utils
 
 # install CUDA
-RUN apt-get install -y cuda-core-9-0 cuda-command-line-tools-9-0 cuda-libraries-9-0 cuda-libraries-dev-9-0
-#RUN apt-get install -y cuda-core-9-1 cuda-compiler-9-1 cuda-command-line-tools-9-1 cuda-libraries-9-1 cuda-libraries-dev-9-1
-RUN apt-get install -y cuda-core-9-2 cuda-compiler-9-2 cuda-command-line-tools-9-2 cuda-libraries-9-2 cuda-libraries-dev-9-2
+RUN apt-get install --no-install-recommends -y cuda-core-9-0 cuda-command-line-tools-9-0 cuda-libraries-9-0 cuda-libraries-dev-9-0
+#RUN apt-get install --no-install-recommends -y cuda-core-9-1 cuda-compiler-9-1 cuda-command-line-tools-9-1 cuda-libraries-9-1 cuda-libraries-dev-9-1
+RUN apt-get install --no-install-recommends -y cuda-core-9-2 cuda-compiler-9-2 cuda-command-line-tools-9-2 cuda-libraries-9-2 cuda-libraries-dev-9-2
+RUN apt-get install --no-install-recommends -y cuda-core-10-0 cuda-compiler-10-0 cuda-command-line-tools-10-0 cuda-libraries-10-0 cuda-libraries-dev-10-0
 
 # install python env
 RUN apt-get install -y python-dev python3.5-dev
