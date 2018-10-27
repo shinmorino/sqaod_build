@@ -1,4 +1,5 @@
 #!/bin/bash
+version=`cat VERSION`
 
 sudo rm -rf build_deb/packages
 sudo cp -r packages/bionic build_deb/packages

@@ -6,10 +6,10 @@ run()
     simd=$2
     cudaver=$3
     
-    ${alternatives} --set libsqaodc.so.0 ${libdir}/libsqaodc-${simd}/libsqaodc.so.0
-    ${alternatives} --set libsqaodc_cuda.so.0 ${libdir}/libsqaodc-cuda-${cudaver}/libsqaodc_cuda.so.0
-    ${alternatives} --query libsqaodc.so.0 | grep Value | grep $simd
-    ${alternatives} --query libsqaodc_cuda.so.0 | grep Value | grep $cudaver
+    ${alternatives} --set libsqaodc.so.1 ${libdir}/libsqaodc-${simd}/libsqaodc.so.1
+    ${alternatives} --set libsqaodc_cuda.so.1 ${libdir}/libsqaodc-cuda-${cudaver}/libsqaodc_cuda.so.1
+    ${alternatives} --query libsqaodc.so.1 | grep Value | grep $simd
+    ${alternatives} --query libsqaodc_cuda.so.1 | grep Value | grep $cudaver
     
     . /home/${pyver}/bin/activate
     cpyver=`python -c "import sys; info = sys.version_info; print('cp' + str(info[0]) + str(info[1]))"`
@@ -22,7 +22,7 @@ run()
 }
 
 
-version=${1:-0.3.1}
+version=${1:-1.0.0}
 pyver=${2:-py2}
 simd=${3:-sse2}
 

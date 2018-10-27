@@ -1,4 +1,4 @@
-%define version 0.3.1
+%define version 1.0.0
 %define build_vpkg @BUILD_VPKG@
 %define build_simd @BUILD_SIMD@
 %define simd @SIMD@
@@ -107,12 +107,12 @@ mv ${RPM_BUILD_ROOT}/%{platform_libdir}/libsqaodc_cuda.so.* ${RPM_BUILD_ROOT}/%{
 # cpu
 %if %{build_simd}
 %post -n libsqaodc-%{simd}
-/sbin/alternatives --install %{_libdir}/libsqaodc.so.0 libsqaodc.so.0 %{libsqaodc_simd_libdir}/libsqaodc.so.0 %{simd_priority}
+/sbin/alternatives --install %{_libdir}/libsqaodc.so.1 libsqaodc.so.1 %{libsqaodc_simd_libdir}/libsqaodc.so.1 %{simd_priority}
 %endif
 
 # cuda
 %if %{build_cuda}
-/sbin/alternatives --install %{_libdir}/libsqaodc_cuda.so.0 libsqaodc_cuda.so.0 %{libsqaodc_cuda_libdir}/libsqaodc_cuda.so.0 %{cuda_priority}
+/sbin/alternatives --install %{_libdir}/libsqaodc_cuda.so.1 libsqaodc_cuda.so.1 %{libsqaodc_cuda_libdir}/libsqaodc_cuda.so.1 %{cuda_priority}
 %endif
 
 # pre uninstall
@@ -120,13 +120,13 @@ mv ${RPM_BUILD_ROOT}/%{platform_libdir}/libsqaodc_cuda.so.* ${RPM_BUILD_ROOT}/%{
 # cpu
 %if %{build_simd}
 %preun -n libsqaodc-%{simd}
-/sbin/alternatives --remove libsqaodc.so.0 %{libsqaodc_simd_libdir}/libsqaodc.so.0
+/sbin/alternatives --remove libsqaodc.so.1 %{libsqaodc_simd_libdir}/libsqaodc.so.1
 %endif
 
 # cuda
 %if %{build_cuda}
 %preun -n libsqaodc-cuda-%{cudaver}
-/sbin/alternatives --remove libsqaodc_cuda.so.0 %{libsqaodc_cuda_libdir}/libsqaodc_cuda.so.0
+/sbin/alternatives --remove libsqaodc_cuda.so.1 %{libsqaodc_cuda_libdir}/libsqaodc_cuda.so.1
 %endif
 
 # post uninstall
