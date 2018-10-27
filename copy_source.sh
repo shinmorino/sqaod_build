@@ -1,11 +1,11 @@
 #!/bin/bash
 
 version=`cat VERSION`
+sudo chown -R `id -u`:`id -g` .
 
-if test -d sqaod
-then
-    mv sqaod sqaod-${version}
-fi
+rm -rf sqaod-${version}
+cp -r sqaod sqaod-${version}
+find sqaod-${version} | grep '\.git$' | xargs rm -rf 
 
 # deb
 rm -rf build_deb/sqaod-${version}
